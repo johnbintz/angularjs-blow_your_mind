@@ -1,0 +1,267 @@
+<html lang="en">
+  <head>
+    <title>Beginner AngularJS: Blow Your Mind Edition</title>
+    <script type="text/javascript" src="jquery-1.10.2.min.js"></script>
+    <script type="text/javascript" src="angular.min.js"></script>
+    <script type="text/javascript" src="keypress.js"></script>
+    <script type="text/javascript" src="beautify.js"></script>
+    <script type="text/javascript" src="beautify-html.js"></script>
+    <script type="text/javascript" src="rainbow-custom.min.js"></script>
+    <script type="text/javascript" src="app.js"></script>
+    <link rel="stylesheet" href="stylesheets/screen.css" />
+    <link rel="stylesheet" href="solarized-dark.css" />
+  </head>
+  <body ng-app="presentation" ui-keydown="{left: 'options.previousSlide()', right: 'options.nextSlide()', space: 'options.nextSlide()'}">
+    <script type="text/ng-template" id="presentation.html">
+      <div class="presentation"><div class="presentation-wrap" ng-transclude /></div>
+    </script>
+
+    <script type="text/ng-template" id="slide.html">
+      <article class="slide" ng-animate="'slide'" ng-show="options.currentSlide == id">
+        <table border="0" cellpadding="0" cellspacing="0">
+          <tr><td valign="center" ng-transclude /></tr>
+        </table>
+      </article>
+    </script>
+
+    <script type="text/ng-template" id="title.html">
+      <h1 ng-bind-html-unsafe="title" />
+    </script>
+
+    <script type="text/ng-template" id="subtitle.html">
+      <h2 ng-bind-html-unsafe="subtitle" />
+    </script>
+
+    <script type="text/ng-template" id="controls.html">
+      <aside class="controls">
+        <a class="previous" href="#previous" ng-class="{ inactive: !options.hasPrevious() }" ng-click="options.previousSlide()">Previous</a>
+        <a class="next" href="#next" ng-class="{ inactive: !options.hasNext() }" ng-click="options.nextSlide()">Next</a>
+      </aside>
+    </script>
+
+    <script type="text/ng-template" id="code_displayer.html">
+      <pre><code></code></pre>
+    </script>
+
+    <presentation>
+      <controls></controls>
+      <slide id="introduction">
+        <script type="text/code-grabber" for="slide">
+          <section id="intro-title" ng-animate="'mind_blown'" ng-show="!state.blow_your_mind">
+            <title>Beginner's AngularJS</title>
+          </section>
+          <section id="intro-blow-your-mind" ng-animate="'mind_blown'" ng-show="state.blow_your_mind">
+            <title>Blow Your Mind Edition</title>
+            <img src="http://www.zawarudo.com/wp-content/uploads/2012/11/mind-blown-2.gif">
+            <subtitle>by John Bintz</subtitle>
+          </section>
+          <aside class="in-slide-controls" ng-animate="'mind_blown'" ng-show="!state.blow_your_mind">
+            <button class="btn" ng-click="state.blow_your_mind = true; $event.preventDefault()">Blow Your Mind</button>
+          </aside>
+        </script>
+        <code-runner for="slide"></code-runner>
+      </slide>
+      <slide id="why-angularjs">
+        <section id="why-angularjs-about">
+          <title>Why is AngularJS mind-blowingly cool?</title>
+        </section>
+      </slide>
+      <slide id="extending-html">
+        <section id="extending-about">
+          <title>AngularJS is about extending HTML</title>
+          <subtitle>not manipulating it after-the-fact</subtitle>
+        </section>
+      </slide>
+      <slide id="but-you-can-manipulate">
+        <section id="but-you-can">
+          <subtitle>...but you can if you have to...</subtitle>
+        </section>
+      </slide>
+      <slide id="jqlite">
+        <section id="jqlite-about">
+          <title>Comes with jqLite built in and can use jQuery</title>
+          <subtitle>not even recommended to load it unless you need it!</subtitle>
+        </section>
+      </slide>
+      <slide id="basic-click-hide-show">
+        <script type="text/code-grabber" for="hide_show">
+          <section id="hide-show-one" ng-show="state.current == 1">
+            <title>One is visible</title>
+          </section>
+          <section id="hide-show-two" ng-show="state.current == 2">
+            <title>Two is visible</title>
+          </section>
+          <section id="hide-show-three" ng-show="state.current == 3">
+            <title>Three is visible</title>
+          </section>
+          <section id="hide-show-four" ng-show="state.current == 4">
+            <title>Four is visible</title>
+          </section>
+          <div class="current-state"><code>state.current</code> == {{ state.current }}</div>
+          <form ng-init="state.current = 1">
+            <fieldset class="btn-group">
+              <button class="btn" ng-click="state.current = 1" ng-disabled="state.current == 1">One</button>
+              <button class="btn" ng-click="state.current = 2" ng-disabled="state.current == 2">Two</button>
+              <button class="btn" ng-click="state.current = 3" ng-disabled="state.current == 3">Three</button>
+              <button class="btn" ng-click="state.current = 4" ng-disabled="state.current == 4">Four</button>
+            </fieldset>
+          </form>
+        </script>
+        <code-runner for="hide_show"></code-runner>
+        <code-displayer for="hide_show" language="html"></code-displayer>
+      </slide>
+      <slide id="different-from-onclick">
+        <section id="different-from-onclick-about">
+          <title>But how is this different from good old <code>onclick</code>, ...?</title>
+        </section>
+      </slide>
+      <slide id="html-compiler">
+        <section id="html-compiler-info">
+          <title>AngularJS has an HTML compiler</title>
+          <subtitle>so why not make some custom html?</subtitle>
+        </section>
+      </slide>
+      <slide id="directives">
+        <section id="directives-info">
+          <title>AngularJS directives</title>
+          <subtitle>the real ultimate power</subtitle>
+        </section>
+      </slide>
+      <slide id="always-using-directives">
+        <section id="always-using-directives-info">
+          <title>Always using directives</title>
+          <subtitle>even if you don't know it yet!</subtitle>
+        </section>
+      </slide>
+      <slide id="attribute-directives">
+        <section id="attribute-directives-info">
+          <title>Attribute directives</title>
+          <subtitle><code class="current-state">ng-click, ng-disabled, ng-show, ng-model</code></subtitle>
+        </section>
+      </slide>
+      <slide id="element-directives">
+        <script type="text/javascript" code-grabber="placekitten_directive">
+          var presentation = angular.module('presentation');
+
+          presentation.directive('placekitten', function() {
+            return {
+              restrict: 'E', // attach to elements named placekitten
+              replace: true, // replace it with our template
+              template: '<img />', // our template
+              link: function(scope, element, attrs) { // run this after we've replaced the element
+                element.attr('src', 'http://placekitten.com/' + attrs.width + '/' + attrs.height);
+              }
+            }
+          });
+        </script>
+        <script type="text/code-grabber" for="placekitten">
+          <div ng-init="state.showDirective = false">
+            <placekitten width="200" height="300" ng-show="state.showDirective == false"/>
+          </div>
+        </script>
+
+        <code-runner for="placekitten"></code-runner>
+        <code-displayer for="placekitten" ng-show="state.showDirective == false" language="html"></code-displayer>
+
+        <aside ng-show="state.showDirective == false">
+          <button class="btn" ng-click="state.showDirective = true">Show the directive</button>
+        </aside>
+
+        <code-displayer for="placekitten_directive" ng-show="state.showDirective == true" language="javascript"></code-displayer>
+      </slide>
+      <slide id="directives-have-scope-and-isolation">
+        <section id="directives-scope-isolation-info">
+          <title>Directives have scope and can be isolated</title>
+          <subtitle>not quite the same as handlers attached to the DOM</subtitle>
+        </section>
+      </slide>
+      <slide id="two-way-data-binding">
+        <section id="two-way-data-binding-info">
+          <title>Automatic two-way data binding</title>
+          <subtitle>the bee's knees</subtitle>
+        </section>
+      </slide>
+      <slide id="name-form">
+        <script type="text/code-grabber" for="name_form">
+          <form ng-init="state.name = ''">
+            <fieldset>
+              <label>Your name: <input ng-model="state.name" ui-keydown="{space: '$event.stopPropagation()'}"/></label>
+            </fieldset>
+          </form>
+          <h1 ng-show="state.name != ''">Well hello, {{ state.name }}</h1>
+        </script>
+        <code-runner for="name_form"></code-runner>
+        <code-displayer for="name_form" language="html"></code-displayer>
+      </slide>
+      <slide id="pojo-binding">
+        <section id="pojo-binding-info">
+          <title>Bind right to Plain Old JavaScript Objects</title>
+          <subtitle>no need for custom model classes if you don't need them</subtitle>
+        </section>
+      </slide>
+      <slide id="data-bound-click-hide-show">
+        <script type="text/code-grabber" for="bound_hide_show">
+          <section id="bound-hide-show-one" ng-show="state.current == 1">
+            <title>One is visible</title>
+          </section>
+          <section id="bound-hide-show-two" ng-show="state.current == 2">
+            <title>Two is visible</title>
+          </section>
+          <section id="bound-hide-show-three" ng-show="state.current == 3">
+            <title>Three is visible</title>
+          </section>
+          <section id="count-hide-show-four" ng-show="state.current == 4">
+            <title>Four is visible</title>
+          </section>
+          <div class="current-state"><code>state.current</code> == <input ng-model="state.current" /></div>
+          <form ng-init="state.current = 1">
+            <fieldset class="btn-group">
+              <button class="btn" ng-click="state.current = 1" ng-disabled="state.current == 1">One</button>
+              <button class="btn" ng-click="state.current = 2" ng-disabled="state.current == 2">Two</button>
+              <button class="btn" ng-click="state.current = 3" ng-disabled="state.current == 3">Three</button>
+              <button class="btn" ng-click="state.current = 4" ng-disabled="state.current == 4">Four</button>
+            </fieldset>
+          </form>
+        </script>
+        <code-runner for="bound_hide_show"></code-runner>
+        <code-displayer for="bound_hide_show" language="html"></code-displayer>
+      </slide>
+      <slide id="pretty-cool">
+        <section id="pretty-cool-info">
+          <title>Pretty cool, huh?</title>
+        </section>
+      </slide>
+      <slide id="other-things">
+        <section id="other-things-info">
+          <title>Has all the bits you would expect</title>
+          <subtitle>XHR, UI libraries, animation support, unit testing helpers, and more!</subtitle>
+        </section>
+      </slide>
+      <slide id="thats-all">
+        <section id="thats-all-info">
+          <title>That's all I've got for now...</title>
+        </section>
+      </slide>
+      <slide id="the-source">
+        <section id="the-source-info">
+          <title>AngularJS</title>
+          <subtitle><a href="http://angularjs.org/">http://angularjs.org</a></subtitle>
+        </section>
+      </slide>
+      <slide id="this-presentation">
+        <section id="this-presentation-info">
+          <title>This talk is an AngularJS app, too!</title>
+          <subtitle><a href="http://github.com/johnbintz/angularjs-blow_your_mind">http://github.com/johnbintz/angularjs-blow_your_mind</a></subtitle>
+        </section>
+      </slide>
+      <slide id="thank-you">
+        <section id="thank-you-info">
+          <title>Thank you!</title>
+          <subtitle><a href="http://www.johnbintz.com/">http://www.johnbintz.com/</a></subtitle>
+          <img src="twitter.png" />
+        </section>
+      </slide>
+    </presentation>
+  </body>
+</html>
+
