@@ -4876,7 +4876,7 @@ input[type="submit"].btn.btn-mini {
 }
 
 /* line 69, ../sass/screen.scss */
-pre {
+pre, pre code {
   font-size: 12px;
 }
 

@@ -66,7 +66,8 @@ presentation.directive('presentation', function() {
     replace: true,
     templateUrl: 'presentation.html',
     controller: function($scope, options) {
-      $scope.options = options
+      $scope.options = options;
+      $scope.codeBlocks = ($scope.codeBlocks || {});
     },
   };
 });
@@ -77,7 +78,8 @@ presentation.directive('slide', function(boundScopeHelper) {
     replace: true,
     transclude: true,
     scope: {
-      'options': '='
+      'options': '=',
+      'codeBlocks': '='
     },
     controller: function($scope) {
       $scope.state = ($scope.state || {});
@@ -192,6 +194,8 @@ presentation.directive('codeDisplayer', function(boundScopeHelper) {
     },
     templateUrl: 'code_displayer.html',
     link: function(scope, element, attrs) {
+      scope.codeBlocks = scope.codeBlocks || {};
+
       scope.$watch('codeBlocks', function(codeBlocks) {
         if (codeBlocks && codeBlocks[attrs.for]) {
           var beautifier;

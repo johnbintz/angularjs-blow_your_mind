@@ -108,11 +108,47 @@
           </form>
         </script>
         <code-runner for="hide_show"></code-runner>
-        <code-displayer for="hide_show" language="html"></code-displayer>
+      </slide>
+      <slide id="basic-click-hide-show-code">
+        <section id="basic-click-hide-show-code-code">
+          <code-displayer for="hide_show" language="html"></code-displayer>
+        </section>
+      </slide>
+      <slide id="ng-directives">
+        <section id="ng-init" ng-show="state.current == 1">
+          <title><code>ng-init</code></title>
+          <subtitle>"Run this expression!"</subtitle>
+        </section>
+        <section id="ng-show" ng-show="state.current == 2">
+          <title><code>ng-show</code></title>
+          <subtitle>"Make me display: visible if..."</subtitle>
+        </section>
+        <section id="ng-click" ng-show="state.current == 3">
+          <title><code>ng-click</code></title>
+          <subtitle>"If I'm clicked, run this expression!"</subtitle>
+        </section>
+        <section id="ng-disabled" ng-show="state.current == 4">
+          <title><code>ng-disabled</code></title>
+          <subtitle>"Make me disabled if..."</subtitle>
+        </section>
+        <form ng-init="state.current = 1">
+          <fieldset class="btn-group">
+            <button class="btn" ng-click="state.current = 1" ng-disabled="state.current == 1">ng-init</button>
+            <button class="btn" ng-click="state.current = 2" ng-disabled="state.current == 2">ng-show</button>
+            <button class="btn" ng-click="state.current = 3" ng-disabled="state.current == 3">ng-click</button>
+            <button class="btn" ng-click="state.current = 4" ng-disabled="state.current == 4">ng-disabled</button>
+          </fieldset>
+        </form>
       </slide>
       <slide id="different-from-onclick">
         <section id="different-from-onclick-about">
           <title>But how is this different from good old <code>onclick</code>, ...?</title>
+        </section>
+      </slide>
+      <slide id="scope">
+        <section id="scope-info">
+          <title>AngularJS applications have scopes</title>
+          <subtitle>separate out the app from the page, and the app parts from each other</subtitle>
         </section>
       </slide>
       <slide id="html-compiler">
@@ -175,6 +211,12 @@
           <subtitle>not quite the same as handlers attached to the DOM</subtitle>
         </section>
       </slide>
+      <slide id="no-window-binding">
+        <section id="no-window-binding-info">
+          <title>No working with <code>window</code>, no need for <code>$.fn.data()</code></title>
+          <subtitle>All completely self-contained</subtitle>
+        </section>
+      </slide>
       <slide id="two-way-data-binding">
         <section id="two-way-data-binding-info">
           <title>Automatic two-way data binding</title>
@@ -224,17 +266,28 @@
           </form>
         </script>
         <code-runner for="bound_hide_show"></code-runner>
-        <code-displayer for="bound_hide_show" language="html"></code-displayer>
       </slide>
       <slide id="pretty-cool">
         <section id="pretty-cool-info">
           <title>Pretty cool, huh?</title>
         </section>
       </slide>
+      <slide id="just-works">
+        <section id="just-works-info">
+          <subtitle>No event binding, no message passing, no custom classes</subtitle>
+          <title>It Just Works (tm)</title>
+        </section>
+      </slide>
       <slide id="other-things">
         <section id="other-things-info">
           <title>Has all the bits you would expect</title>
           <subtitle>XHR, UI libraries, animation support, unit testing helpers, and more!</subtitle>
+        </section>
+      </slide>
+      <slide id="more-libraries">
+        <section id="more-libraries-info">
+          <title>More libraries being developed all the time</title>
+          <subtitle>Very active community</subtitle>
         </section>
       </slide>
       <slide id="thats-all">
