@@ -4877,7 +4877,7 @@ input[type="submit"].btn.btn-mini {
 
 /* line 69, ../sass/screen.scss */
 pre, pre code {
-  font-size: 12px;
+  font-size: 13px;
 }
 
 /* line 73, ../sass/screen.scss */
@@ -4947,7 +4947,7 @@ h2 {
 
 /* line 133, ../sass/screen.scss */
 table {
-  width: 800px;
+  width: 900px;
   height: 100%;
   margin: 0 auto;
 }
